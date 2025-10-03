@@ -1,10 +1,5 @@
-# AppReader
+<original concept>
 
-## Concept: ReviewRecords
-
-### Original Concept Specification (Unchanged)
-
-```
 concept ReviewRecords
 purpose Store reviews of applications, with editing, flagging, and comments
 principle A user can submit a review for an application, and overwrite their past reviews with edits. They can also
@@ -40,11 +35,8 @@ actions
     addComment (author: User, application: Application, text: String, quotedSnippet: String)
         requires: application belongs to active event and author is currently reading the application
         effect: add comment with provided details to the set of comments
-```
 
-### New Concept Specification (AI-Augmented)
-
-```
+<edited concept, AI-augmented>
 concept ReviewRecords
 purpose Store reviews of applications, with editing, flagging, and comments
 principle A user can submit a review for an application, and overwrite their past reviews with edits. They can also
@@ -88,86 +80,3 @@ actions
     async generateAIComments (application: Application, llm:GeminiLLM)
         requires: application belongs to active event
         effect: use llm to produce categorized comments to add to the set of AIComments
-```
-
-### 3. Run the Application
-
-**Run all test cases:**
-
-```bash
-npm start
-```
-
-**Run specific test cases:**
-
-```bash
-npm run manual    # Manual scheduling only
-npm run llm       # LLM-assisted scheduling only
-npm run mixed     # Mixed manual + LLM scheduling
-```
-
-## Test Cases
-
-The application includes three comprehensive test cases:
-
-### 1. Manual Scheduling
-
-Demonstrates adding activities and manually assigning them to time slots:
-
-```typescript
-const planner = new DayPlanner();
-const breakfast = planner.addActivity("Breakfast", 1); // 30 minutes
-planner.assignActivity(breakfast, 14); // 7:00 AM
-```
-
-### 2. LLM-Assisted Scheduling
-
-Shows AI-powered scheduling with hardwired preferences:
-
-```typescript
-const planner = new DayPlanner();
-planner.addActivity("Morning Jog", 2);
-planner.addActivity("Math Homework", 4);
-await llm.requestAssignmentsFromLLM(planner);
-```
-
-### 3. Mixed Scheduling
-
-Combines manual assignments with AI assistance for remaining activities.
-
-## Sample Output
-
-```
-📅 Daily Schedule
-==================
-7:00 AM - Breakfast (30 min)
-8:00 AM - Morning Workout (1 hours)
-10:00 AM - Study Session (1.5 hours)
-1:00 PM - Lunch (30 min)
-3:00 PM - Team Meeting (1 hours)
-7:00 PM - Dinner (30 min)
-9:00 PM - Evening Reading (1 hours)
-
-📋 Unassigned Activities
-========================
-All activities are assigned!
-```
-
-## Key Features
-
-- **Simple State Management**: Activities and assignments stored in memory
-- **Flexible Time System**: Half-hour slots from midnight (0-47)
-- **Query-Based Display**: Schedule generated on-demand, not stored sorted
-- **AI Integration**: Hardwired preferences in LLM prompt (no external hints)
-- **Conflict Detection**: Prevents overlapping activities
-- **Clean Architecture**: First principles implementation with no legacy code
-
-## LLM Preferences (Hardwired)
-
-The AI uses these built-in preferences:
-
-- Exercise activities: Morning (6:00 AM - 10:00 AM)
-- Study/Classes: Focused hours (9:00 AM - 5:00 PM)
-- Meals: Regular intervals (breakfast 7-9 AM, lunch 12-1 PM, dinner 6-8 PM)
-- Social/Relaxation: Evenings (6:00 PM - 10:00 PM)
-- Avoid: Demanding activities after 10:00 PM
