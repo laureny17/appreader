@@ -36,7 +36,9 @@ actions
         requires: application belongs to active event and author is currently reading the application
         effect: add comment with provided details to the set of comments
 
+
 <edited concept, AI-augmented>
+
 concept ReviewRecords
 purpose Store reviews of applications, with editing, flagging, and comments
 principle A user can submit a review for an application, and overwrite their past reviews with edits. They can also
