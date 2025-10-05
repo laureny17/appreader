@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import { ApplicationAssignments } from "./application-assignments";
-import { GeminiLLM, Config } from "./gemini-llm";
-import { Event, admin, User, RubricDimensions } from "./event-directory";
+import { ApplicationAssignments } from "../src/application-assignments";
+import { GeminiLLM, Config } from "../src/gemini-llm";
+import { Event, admin, User, RubricDimensions } from "../src/event-directory";
 
 function loadConfig(): Config {
   try {

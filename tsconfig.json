@@ -16,8 +16,21 @@
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "include": ["*.ts"],
-  "files": ["review-records.ts", "gemini-llm.ts", "review-records-tests.ts"],
+  "include": [
+    "*.ts",
+    "tests/application-assignments-tests.ts",
+    "tests/review-records-tests.ts",
+    "src/application-assignments.ts",
+    "src/event-directory.ts",
+    "src/review-records.ts",
+    "src/gemini-llm.ts",
+    "src/models.ts"
+  ],
+  "files": [
+    "src/review-records.ts",
+    "src/gemini-llm.ts",
+    "tests/review-records-tests.ts"
+  ],
   "exclude": ["node_modules", "dist"],
   "ts-node": {
     "esm": false,
