@@ -17,7 +17,8 @@ state
         a name String
         an active Flag
         a requiredReadsPerApp Number
-        a set of RubricDimensions
+        a rubric set of RubricDimensions
+        a eligibilityCriteria set of String;
         a readers set of Users
         an unverifiedUsers set of Users
     a set of RubricDimensions with

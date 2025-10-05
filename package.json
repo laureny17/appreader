@@ -1,26 +1,33 @@
 {
-  "name": "gemini-schedule-demo",
+  "name": "appreader",
   "version": "1.0.0",
-  "description": "A demo application showing how to use Google's Gemini API to create student schedules",
-  "main": "dist/dayplanner-tests.js",
+  "description": "A demo app implementing the ApplicationAssignments concept with Gemini LLM integration",
+  "main": "dist/application-assignments-tests.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/dayplanner-tests.js",
-    "dev": "ts-node --transpile-only dayplanner-tests.ts",
-    "test": "npm run build && node dist/dayplanner-tests.js",
-    "manual": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testManualScheduling()\"",
-    "llm": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testLLMScheduling()\"",
-    "mixed": "npm run build && node -e \"require('./dist/dayplanner-tests.js').testMixedScheduling()\""
+    "test": "mocha -r ts-node/register application-assignments-tests.ts",
+    "manual": "mocha -r ts-node/register application-assignments-tests.ts --grep 'Manual'",
+    "llm": "mocha -r ts-node/register application-assignments-tests.ts --grep 'LLM'",
+    "mixed": "mocha -r ts-node/register application-assignments-tests.ts --grep 'Mixed'"
   },
-  "keywords": ["gemini", "ai", "schedule", "student", "demo", "typescript"],
+  "keywords": [
+    "gemini",
+    "ai",
+    "schedule",
+    "student",
+    "demo",
+    "typescript"
+  ],
   "author": "Student Demo",
   "license": "MIT",
   "dependencies": {
     "@google/generative-ai": "^0.21.0"
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.10",
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.0"
+    "mocha": "^11.7.4",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
   }
 }

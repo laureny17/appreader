@@ -1,18 +1,19 @@
 import config from "./config.json";
 
 export interface Event {
-  name: String;
+  name: string;
   active: Boolean;
   requiredReadsPerApp: Number;
-  questions: Set<String>;
-  rubric: Set<RubricDimensions>;
+  questions: string[];
+  rubric: RubricDimensions[];
+  eligibilityCriteria: string[];
   readers: Set<User>;
   unverifiedUsers: Set<User>;
 }
 
 export interface RubricDimensions {
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   scaleMin: Number;
   scaleMax: Number;
 }
@@ -36,3 +37,13 @@ export const admin: User = {
   totalTime: 0,
   skipCount: 0,
 };
+
+export class EventDirectory {
+  static incrementUserReadCount(user: User): void {
+    user.readCount += 1;
+  }
+
+  static incrementUserSkipCount(user: User): void {
+    user.skipCount += 1;
+  }
+}
