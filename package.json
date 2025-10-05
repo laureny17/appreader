@@ -5,10 +5,10 @@
   "main": "dist/application-assignments-tests.js",
   "scripts": {
     "build": "tsc",
-    "test": "mocha -r ts-node/register application-assignments-tests.ts",
-    "manual": "mocha -r ts-node/register application-assignments-tests.ts --grep 'Manual'",
-    "llm": "mocha -r ts-node/register application-assignments-tests.ts --grep 'LLM'",
-    "mixed": "mocha -r ts-node/register application-assignments-tests.ts --grep 'Mixed'"
+    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "manual": "mocha -r ts-node/register tests/application-assignments-tests.ts --grep 'Manual'",
+    "llm": "mocha -r ts-node/register tests/application-assignments-tests.ts --grep 'LLM'",
+    "mixed": "mocha -r ts-node/register tests/application-assignments-tests.ts --grep 'Mixed'"
   },
   "keywords": [
     "gemini",

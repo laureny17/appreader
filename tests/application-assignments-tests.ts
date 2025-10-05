@@ -5,7 +5,7 @@ import { Event, admin, User, RubricDimensions } from "../src/event-directory";
 
 function loadConfig(): Config {
   try {
-    const config = require("./config.json");
+    const config = require("../config.json");
     return config;
   } catch (error) {
     throw new Error(
